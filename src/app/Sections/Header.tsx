@@ -40,6 +40,8 @@ const Navbar = () => {
                     <Image src={Logo} alt='logo' className='object-contain mt-0 lg:mt-[0.6rem]' />
                 </Link>
                 <AlignJustify className='scale-125' onClick={() => handleMenu(true)} />
+
+
                 {toggleMenu && (
                     <div className='fixed top-0 left-0 w-full h-screen bg-white flex flex-col justify-center items-center z-10'>
                         <Link href={"/"} onClick={() => handleMenu(false)} >
