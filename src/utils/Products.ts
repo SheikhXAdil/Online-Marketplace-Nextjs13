@@ -1,3 +1,5 @@
+import { Image } from "@sanity/types"
+
 export const urlFormat = (str: string) => {
     let formattedStr = str.replaceAll(" ", "-")
     return formattedStr
@@ -17,7 +19,7 @@ export type product = {
 export interface Product {
     clothingCategory: string,
     price: number,
-    imagesGallery: [[Object]],
+    imagesGallery: Image[],
     id: number,
     name: string,
     catagory: string
