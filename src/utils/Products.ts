@@ -1,4 +1,4 @@
-const urlFormat = (str: string) => {
+export const urlFormat = (str: string) => {
     let formattedStr = str.replaceAll(" ", "-")
     return formattedStr
 }
@@ -12,6 +12,15 @@ export type product = {
     clothingCategory: string,
     price: string,
     pictures: string[]
+}
+
+export interface Product {
+    clothingCategory: string,
+    price: number,
+    imagesGallery: [[Object]],
+    id: number,
+    name: string,
+    catagory: string
 }
 
 export const products: product[] = [
