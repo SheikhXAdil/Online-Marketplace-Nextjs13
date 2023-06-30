@@ -6,16 +6,6 @@ export const urlFormat = (str: string) => {
 }
 
 
-export type product = {
-    id: string,
-    linkText: string,
-    title: string,
-    category: string,
-    clothingCategory: string,
-    price: string,
-    pictures: string[]
-}
-
 export interface Product {
     clothingCategory: string,
     price: number,
