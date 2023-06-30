@@ -1,10 +1,8 @@
 'use client'
 import ProductDetails from "@/components/ProductDetails"
-import { products } from "@/utils/Products"
 import { getProductData } from "../page"
 import { Product, urlFormat } from "@/utils/Products"
 import { useState, useEffect } from "react"
-import Suspense from "react"
 
 
 export async function generateStaticParams() {
