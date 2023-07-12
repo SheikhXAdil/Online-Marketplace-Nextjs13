@@ -3,10 +3,12 @@ import Menu from '@/components/Menu'
 import Image from 'next/image'
 import Logo from "/public/Logo.png"
 
-import { AlignJustify, SearchIcon, ShoppingCartIcon, X } from 'lucide-react'
+import { AlignJustify, SearchIcon, ShoppingCartIcon, X, User } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { useState } from 'react'
 import Link from 'next/link'
+
+
 
 const Navbar = () => {
     const [toggleMenu, setToggleMenu] = useState(false)
@@ -29,8 +31,8 @@ const Navbar = () => {
                 </div>
 
                 <div className='relative'>
-                    <ShoppingCartIcon className='flex w-11 h-11 p-3 rounded-full bg-[#f1f1f1] justify-center items-center' />
-                    <span className='flex justify-center items-center w-4 h-4 absolute -top-1 -right-1 bg-red-500 rounded-full text-white'>1</span>
+                    <User className='flex w-11 h-11 p-3 rounded-full bg-[#f1f1f1] justify-center items-center' />
+                    <span className='flex justify-center items-center w-4 h-4 absolute -top-1 -right-1 bg-red-500 rounded-full text-white'></span>
                 </div>
 
             </header>

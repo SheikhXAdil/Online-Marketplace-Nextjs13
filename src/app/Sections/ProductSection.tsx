@@ -1,6 +1,6 @@
 "use client"
 import ProductCard from "@/components/ProductCard";
-import { getProductData } from "../products/page";
+import { getProductData } from "@/app/(products)/products/page";
 import { Product, urlFormat } from "@/utils/Products";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
@@ -38,8 +38,6 @@ const ProductSection = async () => {
                                 slidesPerView: 4
                             }
                         }}
-                        onSlideChange={() => console.log('slide change')}
-                        onSwiper={(swiper) => console.log(swiper)}
                         autoplay={{
                             delay: 5000,
                             disableOnInteraction: false,

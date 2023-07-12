@@ -19,7 +19,7 @@ const Features = () => {
                 <div className='w-full xl:w-2/5'>
                     <div className='relative z-10 grid grid-cols-2 items-center justify-center gap-8'>
                         <div className='absolute'>
-                            <h1 className="z-0 text-[#212121] text-[4.5rem] md:text-[7rem] leading-none font-extrabold opacity-[0.07]">Different from others</h1>
+                            <h1 className="z-0 text-[#212121] text-[3rem] sm:text-[4.0rem] md:text-[7rem] leading-none font-extrabold opacity-[0.07]">Different from others</h1>
                         </div>
                         {featurs.map((feature, index) => {
                             return (
