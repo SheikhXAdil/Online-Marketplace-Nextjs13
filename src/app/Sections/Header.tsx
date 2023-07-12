@@ -3,10 +3,11 @@ import Menu from '@/components/Menu'
 import Image from 'next/image'
 import Logo from "/public/Logo.png"
 
-import { AlignJustify, SearchIcon, ShoppingCartIcon, X, User } from 'lucide-react'
+import { AlignJustify, SearchIcon, X, User } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { useState } from 'react'
 import Link from 'next/link'
+import AccountDetails from '@/components/AccountDetails'
 
 
 
@@ -30,10 +31,12 @@ const Navbar = () => {
                     <Input className='w-72 mx-auto' placeholder={`What are you searching for`} />
                 </div>
 
-                <div className='relative'>
-                    <User className='flex w-11 h-11 p-3 rounded-full bg-[#f1f1f1] justify-center items-center' />
-                    <span className='flex justify-center items-center w-4 h-4 absolute -top-1 -right-1 bg-red-500 rounded-full text-white'></span>
-                </div>
+                <AccountDetails>
+                    <div className='relative'>
+                        <User className='flex w-11 h-11 p-3 rounded-full bg-[#f1f1f1] justify-center items-center' />
+                        <span className='flex justify-center items-center w-4 h-4 absolute -top-1 -right-1 bg-red-500 rounded-full text-white'></span>
+                    </div>
+                </AccountDetails>
 
             </header>
 
@@ -50,10 +53,12 @@ const Navbar = () => {
                             <Image src={Logo} alt='logo' width={140} height={25} className='object-contain mt-0 lg:mt-[0.6rem] absolute top-12 left-12' />
                         </Link>
                         <X className='absolute top-12 right-12 scale-125' onClick={() => handleMenu(false)} />
-                        <div className='my-4 lg:my-0 relative'>
-                            <ShoppingCartIcon className='flex w-10 h-10 p-3 rounded-full bg-slate-200 justify-center items-center' />
-                            <span className='flex justify-center items-center w-5 h-5 absolute -top-1 -right-1 bg-red-500 rounded-full text-white'>1</span>
-                        </div>
+                        <AccountDetails>
+                            <div className='my-4 lg:my-0 relative'>
+                                <User className='flex w-10 h-10 p-3 rounded-full bg-slate-200 justify-center items-center' />
+                                <span className='flex justify-center items-center w-5 h-5 absolute -top-1 -right-1 bg-red-500 rounded-full text-white'></span>
+                            </div>
+                        </AccountDetails>
                         <Menu handleMenu={handleMenu} />
                     </div>
                 )}

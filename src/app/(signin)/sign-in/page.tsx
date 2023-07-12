@@ -50,10 +50,11 @@ const SignIn = () => {
                     throw new Error(`HTTP Error: ${res.status}`);
                 }
                 else {
-                    toast.success("Signed In successfully. Redicting to Sign in page....")
+                    toast.success("Signed In successfully. Redicting to Home Page....")
                     startTransition(async () => {
 
                         await sleep()
+                        router.refresh()
                         router.push("/")
                     })
                 }

@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
             if (res.length === 0) {
                 return NextResponse.json({ message: "User does not exist. Check credentials" }, { status: 403 })
             }
-            cookies().set("userid", res[0].userid)
+            cookies().set("userid", res[0].id)
             return NextResponse.json({ message: "User exists", data: res })
         }
         else {
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
 
 
                 const res = await db.insert(usersTable).values({
-                    userid: uuidv4(),
+                    id: uuidv4(),
                     email: req.email,
                     password: req.password
                 }).returning().execute()
