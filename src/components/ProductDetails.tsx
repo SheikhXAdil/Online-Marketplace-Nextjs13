@@ -1,13 +1,13 @@
 'use client'
 import { Button } from "@/components/ui/button"
 import { Image as image } from "@sanity/types"
-import { ShoppingCartIcon } from "lucide-react"
 import Image from "next/image"
 import { client } from "@@/sanity/lib/sanityClient"
 import imageUrlBuilder from '@sanity/image-url'
 import { useState } from "react"
+import AddToCart from "./AddToCart"
 
-const ProductDetails = ({ title, price, clothingCategory, pictures }: { title: string, price: string, clothingCategory: string, pictures: (string[] | image[]), }) => {
+const ProductDetails = ({ title, price, clothingCategory, pictures }: { title: string, price: number, clothingCategory: string, pictures: (string[] | image[]), }) => {
 
     const builder = imageUrlBuilder(client)
     function urlFor(source: any) {
@@ -15,7 +15,8 @@ const ProductDetails = ({ title, price, clothingCategory, pictures }: { title: s
     }
 
     const [mainPic, setMainPic] = useState(pictures[0])
-    const [Quantity, setQuantity] = useState(1)
+    const [quantity, setQuantity] = useState(1)
+    const [size, setSize] = useState("S")
 
     const sizes = ["XS", "S", "M", "L", "XL"]
 
@@ -50,9 +51,9 @@ const ProductDetails = ({ title, price, clothingCategory, pictures }: { title: s
                         <div className="flex flex-col gap-3">
                             <h3 className="font-bold text-xl">Select Size</h3>
                             <ul className="list-none flex gap-4">
-                                {sizes.map((size, index) => {
+                                {sizes.map((item, index) => {
                                     return (
-                                        <li key={index} className="md:h-9 h-8 md:w-10 w-8 flex justify-center items-center font-bold rounded-full cursor-pointer p-3 border-2 hover:box-shadow: rgba(0, 0, 0, 0.4) 0px 1000px 3000px;">{size}</li>
+                                        <li onClick={() => setSize(item)} key={index} className={`md:h-9 h-8 md:w-10 w-8 flex justify-center items-center font-bold rounded-full cursor-pointer p-3 border-2 ${item === size ? "border-black" : ""}`}>{item}</li>
                                     )
                                 })}
                             </ul>
@@ -61,19 +62,14 @@ const ProductDetails = ({ title, price, clothingCategory, pictures }: { title: s
                         <div className="flex gap-5">
                             <h5 className="font-bold">Quantity</h5>
                             <div className="flex gap-2">
-                                <Button className="w-8 h-8 p-3 rounded-full text-xl text-black bg-[#f1f1f1]" onClick={() => { setQuantity(Quantity - 1) }}>-</Button>
-                                <span className="w-4 h-10 flex items-center justify-center text-lg">{Quantity}</span>
-                                <Button className="w-8 h-8 p-3 rounded-full text-xl text-black bg-white border-2 border-black" onClick={() => { setQuantity(Quantity + 1) }}>+</Button>
+                                <Button className="w-8 h-8 p-3 rounded-full text-xl text-black bg-[#f1f1f1]" onClick={() => { quantity === 0 ? setQuantity(0) : setQuantity(quantity - 1) }}>-</Button>
+                                <span className="w-4 h-10 flex items-center justify-center text-lg">{quantity}</span>
+                                <Button className="w-8 h-8 p-3 rounded-full text-xl text-black bg-white border-2 border-black" onClick={() => { setQuantity(quantity + 1) }}>+</Button>
                             </div>
                         </div>
 
                         <div className="flex gap-4">
-                            <Button className="w-40 h-12 rounded-none">
-                                <div className="flex w-max gap-2">
-                                    <ShoppingCartIcon />
-                                    <p>Add to Cart</p>
-                                </div>
-                            </Button>
+                            <AddToCart title={title} price={price} quantity={quantity} size={size} />
                             <h3 className="flex items-center text-xl sm:text-3xl md:text-2xl lg:text-3xl font-bold">{`$ ${price}.00`}</h3>
                         </div>
 

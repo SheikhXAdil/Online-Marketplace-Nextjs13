@@ -1,25 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sql } from "@vercel/postgres";
-import { db, Cart, cartTable, newCart } from "@/lib/drizzle";
+import { db, cartTable, newCart } from "@/lib/drizzle";
 import { eq } from 'drizzle-orm';
 import { v4 as uuidv4 } from 'uuid';
-import { headers } from "next/headers";
 
 
 
 export async function GET(request: NextRequest) {
 
+    const req = request.nextUrl
+    const userid = req.searchParams.get("userid") as string
+
     try {
 
-        const headersList = headers()
-        let userid = headersList.get("userid")
-
-        if (userid) {
-            const res = await db.select().from(cartTable).where(eq(cartTable.userid, userid))
-            return NextResponse.json({ message: "Got Items Successfully", date: res })
-        } else {
-            return NextResponse.json({ message: "Not Authorized. Make sure you are signed in" }, { status: 403 })
-        }
+        const res = await db.select().from(cartTable).where(eq(cartTable.userid, userid))
+        return NextResponse.json({ data: res })
 
     } catch (error) {
         return NextResponse.json({ message: (error as { message: string }).message })

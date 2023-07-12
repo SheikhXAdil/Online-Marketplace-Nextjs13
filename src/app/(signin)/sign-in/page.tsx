@@ -91,7 +91,7 @@ const SignIn = () => {
                 </CardContent>
                 <CardFooter className="flex flex-col gap-4 items-start">
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-2">
-                        <p>Don"t have an account?</p>
+                        <p>Don&quot;t have an account?</p>
                         <Link href={"/sign-up"} className="font-medium cursor-pointer">Sign up</Link>
                     </div>
                     <Button className={isMutating ? "bg-gray-400 hover:bg-gray-400" : "bg-gray-800"} onClick={async () => await handlesignin(/\S/.test(email) ? email : null, /^.{5,}/.test(password) ? password : null, router)}>Sign In</Button>

@@ -22,7 +22,6 @@ const Product = ({ params }: { params: { slug: string } }) => {
         const fetchData = async () => {
             try {
                 const result: Product[] = await getProductData();
-                console.log(result)
                 setData(result);
             } catch (error) {
                 console.error(error);
@@ -39,7 +38,7 @@ const Product = ({ params }: { params: { slug: string } }) => {
     return (
         productArr.map((product) => {
             return (
-                <ProductDetails key={product.id} title={product.name} price={String(product.price)} clothingCategory={product.clothingCategory} pictures={product.imagesGallery} />
+                <ProductDetails key={product.id} title={product.name} price={product.price} clothingCategory={product.clothingCategory} pictures={product.imagesGallery} />
             )
         })
     )

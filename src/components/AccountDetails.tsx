@@ -11,7 +11,7 @@ import Cookies from "js-cookie"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 
-const AccountDetails = ({ children }: { children: React.ReactNode }) => {
+const AccountDetails = async ({ children, handleMenu }: { children: React.ReactNode, handleMenu: (state: boolean) => void }) => {
 
     const userid = Cookies.get("userid")
     const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
@@ -21,24 +21,24 @@ const AccountDetails = ({ children }: { children: React.ReactNode }) => {
 
         Cookies.remove("userid")
         await sleep()
-        router.push("/")
+        handleMenu(false)
+        router.refresh()
 
     }
 
 
     return (
         userid
-
             ?
             <Menubar>
                 <MenubarMenu>
                     <MenubarTrigger className="cursor-pointer">{children}</MenubarTrigger>
                     <MenubarContent>
                         <MenubarItem>
-                            <Link className="w-full" href={"/cart"}>
+                            <Link className="w-full" href={"/cart"} onClick={() => handleMenu(false)}>
                                 <div className="w-full flex justify-between cursor-pointer">
                                     <p>Cart</p>
-                                    <span className="flex justify-center items-center w-5 h-5 bg-red-500 rounded-full text-white">1</span>
+                                    <span className="flex justify-center items-center w-5 h-5 bg-red-500 rounded-full text-white"></span>
                                 </div>
                             </Link>
                         </MenubarItem>
@@ -53,9 +53,9 @@ const AccountDetails = ({ children }: { children: React.ReactNode }) => {
                 <MenubarMenu>
                     <MenubarTrigger className="cursor-pointer">{children}</MenubarTrigger>
                     <MenubarContent>
-                        <MenubarItem><Link href={"/sign-in"}>Sign In</Link></MenubarItem>
+                        <MenubarItem><Link href={"/sign-in"} onClick={() => handleMenu(false)}>Sign In</Link></MenubarItem>
                         <MenubarSeparator />
-                        <MenubarItem><Link href={"/sign-up"}>Sign Up</Link></MenubarItem>
+                        <MenubarItem><Link href={"/sign-up"} onClick={() => handleMenu(false)}>Sign Up</Link></MenubarItem>
                     </MenubarContent>
                 </MenubarMenu>
             </Menubar>
