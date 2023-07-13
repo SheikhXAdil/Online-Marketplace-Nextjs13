@@ -1,26 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sql } from "@vercel/postgres";
 import { db, usersTable, newUser, User } from "@/lib/drizzle";
-import { eq } from 'drizzle-orm';
+import { eq, and } from 'drizzle-orm';
 import { v4 as uuidv4 } from 'uuid';
-import { cookies } from 'next/headers'
+import { cookies } from "next/headers";
 import { headers } from "next/headers";
 
 
 
 export async function GET(request: NextRequest) {
 
-    // let req: newUser = await request.json()
     const headersList = headers()
     let email = headersList.get("email")
     let password = headersList.get("password")
 
     try {
         if (email && password) {
-            const res: User[] = await db.select().from(usersTable).where(eq(usersTable.email, email) && eq(usersTable.password, password))
+            const res: User[] = await db.select().from(usersTable).where(and(eq(usersTable.email, email), eq(usersTable.password, password)))
             if (res.length === 0) {
                 return NextResponse.json({ message: "User does not exist. Check credentials" }, { status: 403 })
             }
+
             cookies().set("userid", res[0].id)
             return NextResponse.json({ message: "User exists", data: res })
         }

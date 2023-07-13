@@ -57,8 +57,11 @@ const SignUp = () => {
                     toast.success("Signed up successfully. Redicting to Sign in page....")
 
                     startTransition(async () => {
+                        setEmail("")
+                        setPassword("")
+                        setConfirmPassword("")
                         await sleep()
-                        router.push("/sign-in")
+                        router.replace("/sign-in")
                     })
                 }
             }

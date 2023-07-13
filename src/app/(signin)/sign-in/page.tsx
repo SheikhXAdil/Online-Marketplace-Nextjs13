@@ -17,6 +17,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const SignIn = () => {
 
+
+
     const router = useRouter()
 
     const [email, setEmail] = useState("")
@@ -37,12 +39,13 @@ const SignIn = () => {
         try {
 
             if (email && password) {
-                const res = await fetch("/api/signin", {
+                const res = await fetch(`/api/signin`, {
                     method: "GET",
                     headers: {
                         email: email,
                         password: password
-                    }
+                    },
+                    cache: "no-cache"
                 })
                 if (res.status === 403) {
                     toast.error("User does not exist")
@@ -52,9 +55,9 @@ const SignIn = () => {
                 else {
                     toast.success("Signed In successfully. Redicting to Home Page....")
                     startTransition(async () => {
-
+                        setEmail("")
+                        setPassword("")
                         await sleep()
-                        router.refresh()
                         router.push("/")
                     })
                 }
