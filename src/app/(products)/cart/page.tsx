@@ -2,7 +2,7 @@
 import { Cart } from "@/lib/drizzle"
 import { cookies } from "next/dist/client/components/headers"
 import CardItem from "@/components/CartItem"
-import { Button } from "@/components/ui/button"
+import CheckoutBtn from "@/components/CheckoutBtn";
 
 
 const checkEnvironment = () => {
@@ -14,7 +14,9 @@ const checkEnvironment = () => {
 };
 
 async function getCartData() {
-    const res = await fetch(`${checkEnvironment()}/api/cart?userid=${cookies().get("userid")?.value}`)
+    const res = await fetch(`${checkEnvironment()}/api/cart?userid=${cookies().get("userid")?.value}`, {
+        next: { revalidate: 10 }
+    })
 
 
     if (!res.ok) {
@@ -64,15 +66,17 @@ export default async function Cart() {
                             <p className="text-xl font-bold">{`$ ${totalPrice()}.00`}</p>
                         </div>
 
-                        <Button>Checkout</Button>
+                        <CheckoutBtn cartData={data} />
                     </div>
 
                 </section>
 
             </main>
             :
-            <main className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Your cart is empty</div>
+            <main className="w-10/12 mx-auto flex items-center justify-center">
+                <div className="flex items-center justify-center">
+                    <div className="text-2xl font-bold">Your cart is empty</div>
+                </div>
             </main>
     )
 }
