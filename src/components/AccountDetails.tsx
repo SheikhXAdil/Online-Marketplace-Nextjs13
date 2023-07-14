@@ -10,38 +10,13 @@ import {
 import Cookies from "js-cookie"
 // import { ShoppingCartIcon } from "lucide-react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useState, useTransition } from "react";
 
 
 const AccountDetails = async ({ children, handleMenu }: { children: React.ReactNode, handleMenu: (state: boolean) => void }) => {
-
-    const [isUpdating, setIsUpdating] = useState(false)
-    const [isPending, startTransition] = useTransition();
-    const isMutating = isUpdating || isPending
-
     const userid = Cookies.get("userid")
-    const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
-    const router = useRouter()
-
-    const handleLogout = async (router: any) => {
-
-        setIsUpdating(true)
-
-        startTransition(async () => {
-            Cookies.set("userid", "")
-            await sleep()
-            router.push("/sign-in")
-            handleMenu(false)
-        })
-        setIsUpdating(false)
-
-
-    }
-
 
     return (
-        !!userid
+        userid !== ""
             ?
             <Menubar>
                 <MenubarMenu>
@@ -56,7 +31,9 @@ const AccountDetails = async ({ children, handleMenu }: { children: React.ReactN
                             </Link>
                         </MenubarItem>
                         <MenubarSeparator />
-                        <MenubarItem className={`cursor-pointer ${isMutating ? "text-gray-400 hover:text-gray-400" : "text-gray-800"}`} onClick={() => handleLogout(router)}>Logout</MenubarItem>
+                        <MenubarItem className={`cursor-pointer`} >
+                            <Link onClick={() => handleMenu(false)} href={"/log-out"}>Logout</Link>
+                        </MenubarItem>
                     </MenubarContent>
                 </MenubarMenu>
             </Menubar>

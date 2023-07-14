@@ -3,31 +3,12 @@ import { Button } from "@/components/ui/button"
 import getStipePromise from "@/lib/stripe";
 import { Cart } from "@/lib/drizzle";
 import { useState } from "react";
-import { cookies } from "next/dist/client/components/headers"
 
 
 
 const CheckoutBtn = ({ cartData }: { cartData: Cart[] }) => {
 
     const [isUpdating, setIsUpdating] = useState(false)
-
-    const handleEmptyCart = async () => {
-
-        console.log("deleted")
-
-        try {
-            const res = await fetch(`/api/cart?userid=${cookies().get("userid")?.value}`, {
-                method: "PATCH",
-            })
-            if (!res.ok) {
-                throw new Error(`HTTP Error: ${res.status}`);
-            }
-
-        } catch (error) {
-            console.log(error)
-        }
-
-    }
 
     const handleCheckout = async () => {
 
@@ -43,9 +24,6 @@ const CheckoutBtn = ({ cartData }: { cartData: Cart[] }) => {
             });
 
             const data = await response.json();
-
-            const cartEmpty = await handleEmptyCart()
-            console.log(cartEmpty)
 
             if (data.session) {
                 stripe?.redirectToCheckout({ sessionId: data.session.id });

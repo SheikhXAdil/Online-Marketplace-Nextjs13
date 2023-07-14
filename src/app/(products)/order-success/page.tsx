@@ -3,6 +3,27 @@ import { useState, useEffect } from 'react';
 import Confetti from 'react-confetti'
 
 
+// async function handleEmptyCart() {
+
+//     const userid = cookies().get("userid")?.value as string
+
+//     try {
+//         const res = await fetch(`http://localhost:3000/api/emptycart`, {
+//             method: "DELETE",
+//             headers: [["userid", userid]]
+//         })
+//         const message = await res.json()
+//         console.log(message)
+//         if (!res.ok) {
+//             throw new Error(`HTTP Error: ${res.status}`);
+//         }
+
+//     } catch (error) {
+//         console.log(error)
+//     }
+
+// }
+
 const OrderSuccess = () => {
 
     const [windowSize, setWindowSize] = useState({ width: 1, height: 1 })

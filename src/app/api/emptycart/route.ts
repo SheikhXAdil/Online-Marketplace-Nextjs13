@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db, cartTable } from "@/lib/drizzle";
 import { eq } from 'drizzle-orm';
+import { headers } from "next/headers";
 
 
 
-export async function PATCH(request: NextRequest) {
+export async function DELETE(request: NextRequest) {
 
-    const req = request.nextUrl
-    const userid = req.searchParams.get("userid")
+    const userid = headers().get("userid")
+
 
     try {
         if (userid) {
