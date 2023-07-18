@@ -15,7 +15,11 @@ const Hero = () => {
 
             {/* left section */}
             <div className='flex w-full xl:w-1/2 flex-col justify-center gap-10'>
+
+                {/* Blue Badge */}
                 <Badge className='w-32 h-10 flex justify-center items-center rounded-lg text-lg font-bold text-[#0062F5] bg-[#0062F5]/10'>Sale 70%</Badge>
+
+                {/* Main Taglines */}
                 <h1 className='text-4xl sm:text-6xl lg:text-5xl xl:text-6xl font-bold lg:w-4/5 xl:w-full'>An Industrial Take on Streetwear</h1>
                 <p className='w-4/5 md:w-3/5'>Anyone can beat you but no one can beat your outfit as long as you wear Dine outfits.</p>
                 <Button className='w-52 h-16'>
@@ -24,6 +28,8 @@ const Hero = () => {
                         <span>Start Shopping</span>
                     </Link>
                 </Button>
+
+                {/* Brand Logos */}
                 <div className='grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 xl:mt-20'>
                     <Image src={Featured1} alt='featured 1' />
                     <Image src={Featured2} alt='featured 2' />
