@@ -62,11 +62,21 @@ export default async function Cart() {
                     <div className="mt-8">
 
                         <div className="flex gap-2 my-4">
-                            <h2 className="text-xl font-semibold">Total Cost:</h2>
+                            <h2 className="text-xl font-semibold">Subtotal:</h2>
                             <p className="text-xl font-bold">{`$ ${totalPrice()}.00`}</p>
                         </div>
 
                         <CheckoutBtn cartData={data} />
+                    </div>
+
+                    <div className="my-4 flex flex-col w-11/12 md:w-3/5 lg:w-2/5 p-4 bg-slate-200 gap-2">
+                        <h1 className="font-semibold text-lg">Note:</h1>
+                        <div>
+                            <p>Use following fake details made for testing at checkout to test the app:</p>
+                            <p>Card Number: 4242 4242 4242 4242</p>
+                            <p>Name on Card: Sample Card</p>
+                            <p>CVC: 123</p>
+                        </div>
                     </div>
 
                 </section>

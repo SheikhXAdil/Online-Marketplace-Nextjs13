@@ -77,37 +77,51 @@ const SignUp = () => {
     }
 
     return (
-        <main className="flex w-10/12 mx-auto">
-            <Card className="w-11/12 md:w-3/5 lg:w-2/5 h-[600px] sm:h-3/5 p-4 flex flex-col justify-between gap-4">
-                <CardHeader>
-                    <CardTitle className="font-bold text-2xl">Sign Up</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <div className="grid w-full gap-4">
-                        <div className="flex flex-col gap-5">
+        <main className="flex flex-col w-10/12 mx-auto">
 
-                            <h3 className="font-medium">Email</h3>
-                            <Input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter your email" />
+            <section className="flex flex-col w-11/12 md:w-3/5 lg:w-2/5 p-4 bg-slate-200 gap-2">
+                <h1 className="font-semibold text-lg">Note:</h1>
+                <p>The app isn't ready security wise yet so don't enter any sensitive details or password. Just use random password to test</p>
+                <p className="font-semibold">OR</p>
+                <div>
+                    <p>Use following credentials if you want to test the app:</p>
+                    <p>Email: test@email.com</p>
+                    <p>Password: 12345</p>
+                </div>
+            </section>
 
-                            <div className="flex gap-2">
-                                <h3 className="font-medium">Password</h3>
-                                <p className="">(Min length 5)</p>
+            <section className="flex w-10/12 mx-auto">
+                <Card className="w-11/12 md:w-3/5 lg:w-2/5 h-[600px] sm:h-3/5 p-4 flex flex-col justify-between gap-4">
+                    <CardHeader>
+                        <CardTitle className="font-bold text-2xl">Sign Up</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="grid w-full gap-4">
+                            <div className="flex flex-col gap-5">
+
+                                <h3 className="font-medium">Email</h3>
+                                <Input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter your email" />
+
+                                <div className="flex gap-2">
+                                    <h3 className="font-medium">Password</h3>
+                                    <p className="">(Min length 5)</p>
+                                </div>
+                                <Input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" />
+
+                                <h3 className="font-medium">Confirm Password</h3>
+                                <Input value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="Confirm password" />
                             </div>
-                            <Input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" />
-
-                            <h3 className="font-medium">Confirm Password</h3>
-                            <Input value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="Confirm password" />
                         </div>
-                    </div>
-                </CardContent>
-                <CardFooter className="flex flex-col gap-4 items-start">
-                    <div className="flex flex-col sm:flex-row gap-2">
-                        <p>Already have an account?</p>
-                        <Link href={"/sign-in"} className="font-medium cursor-pointer">Sign in</Link>
-                    </div>
-                    <Button className={isMutating ? "bg-gray-400 hover:bg-gray-400" : "bg-gray-800"} onClick={async () => await handlesignup(/\S/.test(email) ? email : null, (/^.{5,}/.test(password) && password === confirmPassword) ? password : null, router)}>Sign Up</Button>
-                </CardFooter>
-            </Card>
+                    </CardContent>
+                    <CardFooter className="flex flex-col gap-4 items-start">
+                        <div className="flex flex-col sm:flex-row gap-2">
+                            <p>Already have an account?</p>
+                            <Link href={"/sign-in"} className="font-medium cursor-pointer">Sign in</Link>
+                        </div>
+                        <Button className={isMutating ? "bg-gray-400 hover:bg-gray-400" : "bg-gray-800"} onClick={async () => await handlesignup(/\S/.test(email) ? email : null, (/^.{5,}/.test(password) && password === confirmPassword) ? password : null, router)}>Sign Up</Button>
+                    </CardFooter>
+                </Card>
+            </section>
 
             <ToastContainer />
 
