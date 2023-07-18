@@ -1,8 +1,10 @@
-// @ts-ignore
+"use client"
 import { Cart } from "@/lib/drizzle"
 import { cookies } from "next/dist/client/components/headers"
 import CardItem from "@/components/CartItem"
 import CheckoutBtn from "@/components/CheckoutBtn";
+import { useDispatch } from "react-redux";
+import { cartActions } from "@/store/cartSlice";
 
 
 const checkEnvironment = () => {
@@ -27,7 +29,10 @@ async function getCartData() {
 }
 
 export default async function Cart() {
+
     const { data }: { data: Cart[] } = await getCartData()
+    const dispatch = useDispatch();
+    dispatch(cartActions.setinitialCartAmount(data.length));
 
     const totalPrice = () => {
 
