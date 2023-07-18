@@ -34,9 +34,9 @@ const ProductsSwiper = ({ Products }: { Products: Product[] }) => {
             modules={[Autoplay]}
             className="mySwiper"
         >
-            {Products.map((product) => {
+            {Products.map((product, index) => {
                 return (
-                    <div key={product.id} className="w-full sm:w-1/3 flex items-center justify-center">
+                    <div key={index} className="w-full sm:w-1/3 flex items-center justify-center">
                         <SwiperSlide>
                             <ProductCard key={product.id} title={product.name} clothingCategory={product.clothingCategory} linkText={urlFormat(product.name)} price={String(product.price)} picture={product.imagesGallery[0]} />
                         </SwiperSlide>

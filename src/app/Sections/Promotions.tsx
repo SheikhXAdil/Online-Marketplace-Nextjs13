@@ -15,7 +15,7 @@ const Promotions = () => {
             <div className='flex flex-col lg:flex-row gap-8'>
                 <div className='flex flex-col flex-1 gap-5'>
 
-                    <div className='flex flex-1 justify-around bg-[#d6d6d8]'>
+                    <div className='flex flex-col md:flex-row flex-1 justify-around bg-[#d6d6d8]'>
                         <div className='flex flex-col justify-center p-4 gap-2'>
                             <h4 className='text-lg sm:text-2xl md:text-3xl font-bold'>GET UP TO 60%</h4>
                             <p className='md:text-xl'>For the summer season</p>
@@ -26,7 +26,7 @@ const Promotions = () => {
                     <div className='flex flex-1 flex-col justify-center items-center gap-2 p-6 pt-10 text-white bg-[#212121]'>
                         <h4 className='text-3xl sm:text-4xl font-bold mb-3'>GET 30% Off</h4>
                         <p>USE PROMO CODE</p>
-                        <Badge className='flex justify-center items-center px-4 sm:px-12 py-2 rounded-lg text-xl tracking-widest font-semibold bg-[#474747]'>DINEWEEKENDSALE</Badge>
+                        <Badge className='flex justify-center items-center px-4 sm:px-12 py-2 rounded-lg text-[1.05rem] sm:text-xl tracking-widest font-semibold bg-[#474747]'>DINEWEEKENDSALE</Badge>
                     </div>
 
                 </div>
