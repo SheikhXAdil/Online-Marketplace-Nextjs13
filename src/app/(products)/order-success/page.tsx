@@ -9,7 +9,7 @@ async function handleEmptyCart() {
     const userid = Cookies.get("userid") as string
 
     try {
-        const res = await fetch(`http://localhost:3000/api/emptycart`, {
+        const res = await fetch(`/api/emptycart`, {
             method: "POST",
             headers: [["userid", userid]]
         })
