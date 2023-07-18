@@ -1,28 +1,29 @@
 "use client"
 import { useState, useEffect } from 'react';
 import Confetti from 'react-confetti'
+import Cookies from 'js-cookie';
 
 
-// async function handleEmptyCart() {
+async function handleEmptyCart() {
 
-//     const userid = cookies().get("userid")?.value as string
+    const userid = Cookies.get("userid") as string
 
-//     try {
-//         const res = await fetch(`http://localhost:3000/api/emptycart`, {
-//             method: "DELETE",
-//             headers: [["userid", userid]]
-//         })
-//         const message = await res.json()
-//         console.log(message)
-//         if (!res.ok) {
-//             throw new Error(`HTTP Error: ${res.status}`);
-//         }
+    try {
+        const res = await fetch(`http://localhost:3000/api/emptycart`, {
+            method: "POST",
+            headers: [["userid", userid]]
+        })
+        const message = await res.json()
+        console.log(message)
+        if (!res.ok) {
+            throw new Error(`HTTP Error: ${res.status}`);
+        }
 
-//     } catch (error) {
-//         console.log(error)
-//     }
+    } catch (error) {
+        console.log(error)
+    }
 
-// }
+}
 
 const OrderSuccess = () => {
 
@@ -31,7 +32,10 @@ const OrderSuccess = () => {
 
     useEffect(() => {
         setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+        handleEmptyCart()
     }, [])
+
+
 
     return (
         <main className="w-10/12 mx-auto flex items-center justify-center">

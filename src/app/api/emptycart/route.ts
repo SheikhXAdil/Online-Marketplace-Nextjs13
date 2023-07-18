@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 
 
 
-export async function DELETE(request: NextRequest) {
+export async function POST(request: NextRequest) {
 
     const userid = headers().get("userid")
 
