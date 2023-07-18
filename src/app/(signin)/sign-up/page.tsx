@@ -81,7 +81,7 @@ const SignUp = () => {
 
             <section className="flex flex-col w-11/12 md:w-3/5 lg:w-2/5 p-4 bg-slate-200 gap-2">
                 <h1 className="font-semibold text-lg">Note:</h1>
-                <p>The app isn't ready security wise yet so don't enter any sensitive details or password. Just use random password to test</p>
+                <p>The app isn&apos;t ready security wise yet so don&apos;t enter any sensitive details or password. Just use random password to test</p>
                 <p className="font-semibold">OR</p>
                 <div>
                     <p>Use following credentials if you want to test the app:</p>
