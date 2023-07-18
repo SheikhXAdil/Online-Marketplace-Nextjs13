@@ -102,7 +102,7 @@ const Navbar = () => {
                                         <Link className="w-full" href={"/cart"} onClick={() => handleMenu(false)} >
                                             <div className='relative'>
                                                 <ShoppingCartIcon className='flex w-11 h-11 p-3 rounded-full bg-[#f1f1f1] justify-center items-center' />
-                                                <span className='flex justify-center items-center w-4 h-4 absolute top-0 right-3 bg-red-500 rounded-full text-white text-sm'>1</span>
+                                                <span className='flex justify-center items-center w-4 h-4 absolute top-0 right-3 bg-red-500 rounded-full text-white text-sm'></span>
                                             </div>
                                         </Link>
                                         <Link className="text-lg font-medium cursor-pointer" href={"/log-out"} onClick={() => handleMenu(false)}>Logout</Link>
