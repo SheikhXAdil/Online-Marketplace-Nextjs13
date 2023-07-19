@@ -9,7 +9,7 @@ const checkEnvironment = () => {
     let base_url =
         process.env.VERCEL_ENV === "development"
             ? "http://localhost:3000"
-            : "https://online-marketplace-adil.vercel.app";
+            : "https://mydinemart.vercel.app";
     return base_url;
 };
 
