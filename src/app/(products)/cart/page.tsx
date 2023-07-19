@@ -17,7 +17,7 @@ const checkEnvironment = () => {
 
 async function getCartData() {
     const res = await fetch(`${checkEnvironment()}/api/cart?userid=${cookies().get("userid")?.value}`, {
-        cache: "no-store"
+        next: { revalidate: 2 }
     })
 
 

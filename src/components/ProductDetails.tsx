@@ -25,19 +25,19 @@ const ProductDetails = ({ title, price, clothingCategory, pictures }: { title: s
 
             <section className="w-10/12 mx-auto flex flex-col gap-8">
 
-                <div className="flex flex-wrap py-12 justify-around min-h-screen">
+                <div className="flex flex-wrap py-12 justify-around min-h-screen lg:max-h-screen">
 
-                    <div className="w-[30%] md:w-[10%] flex flex-col gap-3">
+                    <div className="w-full sm:w-[30%] md:w-[10%] flex flex-row flex-wrap sm:justify-center sm:items-center sm:flex-col gap-3 mb-4 sm:my-0">
                         {pictures.map((picture, index) => {
                             return (
-                                <Image key={index} src={typeof picture === "string" ? picture : urlFor(picture).url()} alt={title} width={100} height={100} className="cursor-pointer" onMouseEnter={() => { setMainPic(picture) }} onMouseLeave={() => { setMainPic(pictures[0]) }} />
+                                <Image key={index} src={typeof picture === "string" ? picture : urlFor(picture).url()} alt={title} width={80} height={80} className="cursor-pointer" onMouseEnter={() => { setMainPic(picture) }} onMouseLeave={() => { setMainPic(pictures[0]) }} />
                             )
                         })}
                     </div>
 
-                    <div className="w-[65%] md:w-[50%] h-[50vh] md:h-screen">
+                    <div className="w-full sm:w-[65%] md:w-[50%] h-[50vh] md:h-screen">
                         <div className="relative w-full h-full">
-                            <Image src={typeof mainPic === "string" ? mainPic : urlFor(mainPic).url()} alt={title} fill className="flex items-start sm:object-contain md:object-fill" />
+                            <Image src={typeof mainPic === "string" ? mainPic : urlFor(mainPic).url()} alt={title} fill className="flex items-start object-contain" />
                         </div>
                     </div>
 
