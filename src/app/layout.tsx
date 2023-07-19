@@ -1,11 +1,11 @@
 import Footer from './Sections/Footer'
 import Header from "@/app/Sections/Header"
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 import Providers from '@/components/Providers'
 
 
-const inter = Inter({ subsets: ['latin'] })
+const roboto = Roboto({ weight: "400", style: "normal", subsets: ["latin"] })
 
 export const metadata = {
   title: 'Dine Mart - Created by Muhammad Adil Nadeem',
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} flex flex-col gap-4`}>
+      <body className={`${roboto.className} flex flex-col gap-4`}>
         <Providers>
           <Header />
           <main className='flex flex-col gap-24'>

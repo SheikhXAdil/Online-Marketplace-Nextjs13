@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Logo from "/public/Logo.png"
 import { AlignJustify, SearchIcon, X } from 'lucide-react'
 import { Input } from '@/components/ui/input'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Cookies from "js-cookie"
 import AccountDetails from '@/components/AccountDetails'
@@ -19,8 +19,13 @@ const Navbar = () => {
     const handleMenu = (state: boolean) => {
         setToggleMenu(state)
     }
+    const [userid, serUserid] = useState("")
 
-    const userid = Cookies.get("userid")
+    useEffect(() => {
+        const id = Cookies.get("userid")
+        serUserid(id ? id : "")
+
+    }, [])
 
     return (
         <>
