@@ -17,7 +17,7 @@ const checkEnvironment = () => {
 
 async function getCartData() {
     const res = await fetch(`${checkEnvironment()}/api/cart?userid=${cookies().get("userid")?.value}`, {
-        next: { revalidate: 5 }
+        cache: "no-store"
     })
 
 
@@ -31,8 +31,6 @@ async function getCartData() {
 export default async function Cart() {
 
     const { data }: { data: Cart[] } = await getCartData()
-    const dispatch = useDispatch();
-    dispatch(cartActions.setinitialCartAmount(data.length));
 
     const totalPrice = () => {
 
