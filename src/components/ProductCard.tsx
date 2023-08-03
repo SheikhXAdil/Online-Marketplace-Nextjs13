@@ -22,7 +22,7 @@ const ProductCard = ({ title, price, clothingCategory, linkText, picture }: { ti
         <Link href={`/products/${linkText}`}>
             <Card className="hover:scale-110 transition">
                 <CardHeader>
-                    <Image src={urlFor(picture).url()} alt={title} width={250} height={270} />
+                    <Image src={urlFor(picture).url()} alt={title} width={250} height={270} style={{ width: "auto" }} />
                 </CardHeader>
                 <CardContent className="flex flex-col gap-1">
                     <CardTitle>{title}</CardTitle>

@@ -18,7 +18,7 @@ const Logout = () => {
 
         handleLogout(router)
 
-    }, [])
+    })
 
 
     return (

@@ -1,6 +1,4 @@
-// @ts-ignore
 import { Cart } from "@/lib/drizzle"
-import { cookies } from "next/dist/client/components/headers"
 import CardItem from "@/components/CartItem"
 import CheckoutBtn from "@/components/CheckoutBtn";
 
@@ -14,8 +12,9 @@ const checkEnvironment = () => {
 };
 
 async function getCartData() {
-    const res = await fetch(`${checkEnvironment()}/api/cart?userid=${cookies().get("userid")?.value}`, {
-        next: { revalidate: 5 }
+
+    const res = await fetch(`${checkEnvironment()}/api/cart`, {
+        next: { revalidate: 0 }
     })
 
 
@@ -35,15 +34,18 @@ export default async function Cart() {
         data.map((item) => {
             arr.push(item.price * item.quantity)
         })
-
-        return arr.reduce((a, b) => a + b)
+        if (arr.length > 0) {
+            return arr.reduce((a, b) => a + b)
+        } else {
+            return 0
+        }
     }
 
 
 
-    return (
-        data.length > 0
-            ?
+    if (data.length > 0) {
+
+        return (
             <main className="w-10/12 mx-auto flex flex-col gap-24">
 
                 <section className="grid grid-cols-3 gap-4">
@@ -82,11 +84,16 @@ export default async function Cart() {
                 </section>
 
             </main>
-            :
+
+        )
+
+    } else {
+        return (
             <main className="w-10/12 mx-auto flex items-center justify-center">
                 <div className="flex items-center justify-center">
                     <div className="text-2xl font-bold">Your cart is empty</div>
                 </div>
             </main>
-    )
+        )
+    }
 }
