@@ -11,6 +11,8 @@ import { useRouter } from 'next/navigation';
 import { useState, useTransition } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAppDispatch } from '@/hooks/hooks'
+import { cartActions } from '@/store/cartSlice'
 
 
 
@@ -18,6 +20,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const CartItem = ({ productid, title, price, quantity, size }: { productid: string, title: string, price: number, quantity: number, size: string }) => {
 
     const router = useRouter()
+    const dispatch = useAppDispatch()
+
 
     const [isUpdating, setIsUpdating] = useState(false)
     const [isPending, startTransition] = useTransition();
@@ -40,6 +44,7 @@ const CartItem = ({ productid, title, price, quantity, size }: { productid: stri
                 toast.success("Item Deleted successfully")
                 startTransition(async () => {
                     router.refresh()
+                    dispatch(cartActions.removeFromCart())
                 })
             }
 

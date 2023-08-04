@@ -6,12 +6,17 @@ import { useState, useTransition } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from "js-cookie";
+import { useAppDispatch } from '@/hooks/hooks'
+import { cartActions } from '@/store/cartSlice'
+
+
 
 
 const AddToCart = ({ title, price, quantity, size }: { title: string, price: number, quantity: number, size: string }) => {
 
 
     const router = useRouter()
+    const dispatch = useAppDispatch()
 
     const [isUpdating, setIsUpdating] = useState(false)
     const [isPending, startTransition] = useTransition();
@@ -42,6 +47,7 @@ const AddToCart = ({ title, price, quantity, size }: { title: string, price: num
                 else {
                     toast.success("Added to cart successfully")
                     startTransition(async () => {
+                        dispatch(cartActions.addToCart())
                         router.refresh()
                     })
                 }

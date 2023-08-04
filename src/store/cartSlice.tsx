@@ -1,14 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '@/store/store'
+// import type { RootState } from '@/store/store'
 
 // Define a type for the slice state
 export interface CartState {
-    totalQuantity: number
+    totalQuantity: number,
+    fetchCartCount: boolean
 }
 
 // Define the initial state using that type
 const initialState: CartState = {
-    totalQuantity: 0
+    totalQuantity: 0,
+    fetchCartCount: true
 }
 
 export const cartSlice = createSlice({
@@ -17,14 +19,18 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: state => {
-            state.totalQuantity += 1
+            state.totalQuantity += 1,
+                state.fetchCartCount = true
+
         },
         removeFromCart: state => {
-            state.totalQuantity -= 1
+            state.totalQuantity -= 1,
+                state.fetchCartCount = true
         },
         // Use the PayloadAction type to declare the contents of `action.payload`
         setinitialCartAmount: (state, action: PayloadAction<number>) => {
-            state.totalQuantity = action.payload
+            state.totalQuantity = action.payload,
+                state.fetchCartCount = false
         }
     }
 })
