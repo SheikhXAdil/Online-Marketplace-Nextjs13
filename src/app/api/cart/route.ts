@@ -14,9 +14,8 @@ export async function GET(request: NextRequest) {
     const userid = cookies().get("userid")?.value as string
 
     try {
-
-        const res = await db.select().from(cartTable).where(eq(cartTable.userid, userid)).execute()
-        return NextResponse.json({ data: res })
+        const res = await db.select().from(cartTable)
+        return NextResponse.json({ data: res, count: res.length })
 
     } catch (error) {
         return NextResponse.json({ message: (error as { message: string }).message })

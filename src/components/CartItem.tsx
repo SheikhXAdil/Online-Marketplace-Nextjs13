@@ -43,8 +43,8 @@ const CartItem = ({ productid, title, price, quantity, size }: { productid: stri
             else {
                 toast.success("Item Deleted successfully")
                 startTransition(async () => {
-                    router.refresh()
                     dispatch(cartActions.removeFromCart())
+                    router.refresh()
                 })
             }
 

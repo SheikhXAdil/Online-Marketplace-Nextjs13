@@ -2,39 +2,32 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 // import type { RootState } from '@/store/store'
 
 // Define a type for the slice state
-export interface CartState {
-    totalQuantity: number,
+export interface userSlice {
+    userid: string,
     // fetchCartCount: boolean
 }
 
 // Define the initial state using that type
-const initialState: CartState = {
-    totalQuantity: 0,
+const initialState: userSlice = {
+    userid: "",
     // fetchCartCount: false
 }
 
-export const cartSlice = createSlice({
-    name: 'cart',
+export const userSlice = createSlice({
+    name: 'user',
     // `createSlice` will infer the state type from the `initialState` argument
     initialState,
     reducers: {
-        addToCart: state => {
-            state.totalQuantity += 1
-
-        },
-        removeFromCart: state => {
-            state.totalQuantity -= 1
-        },
         // Use the PayloadAction type to declare the contents of `action.payload`
-        setinitialCartAmount: (state, action: PayloadAction<number>) => {
-            state.totalQuantity = action.payload
+        setUser: (state, action: PayloadAction<string>) => {
+            state.userid = action.payload
         }
     }
 })
 
-export const cartActions = cartSlice.actions
+export const userActions = userSlice.actions
 
 //  Other code such as selectors can use the imported `RootState` type
 // export const selectCount = (state: RootState) => state.counter.value
 
-export default cartSlice.reducer
+export default userSlice.reducer

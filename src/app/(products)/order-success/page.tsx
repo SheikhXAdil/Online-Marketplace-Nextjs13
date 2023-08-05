@@ -2,30 +2,39 @@
 import { useState, useEffect } from 'react';
 import Confetti from 'react-confetti'
 import Cookies from 'js-cookie';
+import { useAppDispatch } from '@/hooks/hooks';
+import { cartActions } from '@/store/cartSlice';
 
 
-async function handleEmptyCart() {
 
-    const userid = Cookies.get("userid") as string
-
-    try {
-        const res = await fetch(`/api/emptycart`, {
-            method: "POST",
-            headers: [["userid", userid]]
-        })
-        const message = await res.json()
-        console.log(message)
-        if (!res.ok) {
-            throw new Error(`HTTP Error: ${res.status}`);
-        }
-
-    } catch (error) {
-        console.log(error)
-    }
-
-}
 
 const OrderSuccess = () => {
+
+    const dispatch = useAppDispatch()
+
+    async function handleEmptyCart() {
+
+
+        const userid = Cookies.get("userid") as string
+
+        try {
+            const res = await fetch(`/api/emptycart`, {
+                method: "POST",
+                headers: [["userid", userid]]
+            })
+            const message = await res.json()
+            dispatch(cartActions.setinitialCartAmount(0))
+            console.log(message)
+            if (!res.ok) {
+                throw new Error(`HTTP Error: ${res.status}`);
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
 
     const [windowSize, setWindowSize] = useState({ width: 1, height: 1 })
 
