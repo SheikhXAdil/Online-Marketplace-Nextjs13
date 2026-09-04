@@ -1,34 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dine Mart — Online Marketplace
 
-## Getting Started
+A full-stack online marketplace developed **from scratch** during my time at **PIAIC (Presidential Initiative for Artificial Intelligence and Computing)**.
 
-First, run the development server:
+The project was built to practice and demonstrate modern web development concepts by designing and implementing an e-commerce application from the ground up using **Next.js 13** and **Sanity**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**[Dine Mart — Online Marketplace](https://mydinemart.vercel.app/)**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## About
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**Dine Mart** is an online marketplace for browsing and purchasing fashion products through a modern web interface.
 
-## Learn More
+The application includes functionality for:
 
-To learn more about Next.js, take a look at the following resources:
+* User registration and authentication
+* Product browsing and categorization
+* Product detail pages
+* Shopping cart
+* Product search and filtering
+* Promotional sections and discounts
+* Responsive user interface
+* Content management through Sanity
+* Dynamic product data
+* Deployment through Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The project was designed and implemented **entirely from scratch** as part of my learning and development work at PIAIC.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Tech Stack
 
-## Deploy on Vercel
+* **Next.js 13**
+* **React**
+* **TypeScript**
+* **Sanity**
+* **Tailwind CSS**
+* **JavaScript**
+* **Vercel**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Key Concepts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Through this project, I practiced:
+
+* Building a complete web application with Next.js
+* Developing reusable React components
+* Creating dynamic pages and product interfaces
+* Implementing user authentication
+* Managing shopping cart functionality
+* Working with a headless CMS using Sanity
+* Fetching and displaying dynamic product data
+* Building responsive interfaces with Tailwind CSS
+* Structuring a larger frontend application
+* Deploying a production-style web application using Vercel
+
+## Development Context
+
+This project was developed during my time at **PIAIC** as a practical project for applying the web development concepts I had learned.
+
+Unlike some of my other early projects that were based on tutorials or existing implementations, **Dine Mart was developed from scratch by me**. I designed the application structure, implemented its functionality, integrated the required services, and deployed the resulting application.
+
+The project represents an important part of my early web development experience and my progression toward building larger, more complete applications.
+
+## Status
+
+**Archived personal project.**
+
+The application remains deployed as a demonstration of the project, while the repository is maintained as part of my programming and web development portfolio.
